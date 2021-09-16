@@ -1,4 +1,9 @@
 
+using System.Threading.Tasks;
+using luncher_api.Models;
+using luncher_api.Models.Api;
+using luncher_api.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace luncher_api.Controllers
@@ -7,16 +12,39 @@ namespace luncher_api.Controllers
 	[Route("[controller]")]
 	public class FeedbackController : ControllerBase
 	{
-		public FeedbackController() { }
+		private FeedbackRepository _repository;
+
+		public FeedbackController(FeedbackRepository repository)
+		{
+			_repository = repository;
+		}
 
 		[HttpPost("contact")]
-		public void PostContactFeedback()
+		[ProducesResponseType(StatusCodes.Status201Created)]
+		public async Task<IActionResult> PostContactFeedback(ContactFeedback feedback)
 		{
+			await _repository.Commit(new FeedbackItem
+			{
+				Name = feedback.name,
+				Note = feedback.note
+			});
+
+			return Created("", feedback);
 		}
 
 		[HttpPost("addRestaurant")]
-		public void PostRestaurantFeedback()
+		[ProducesResponseType(StatusCodes.Status201Created)]
+		public async Task<IActionResult> PostRestaurantFeedback(RestaurantFeedback feedback)
 		{
+			await _repository.Commit(new FeedbackItem
+			{
+				Name = feedback.name,
+				Note = feedback.note,
+				RestaurantName = feedback.restaurantName,
+				RestaurantUrl = feedback.restaurantUrl
+			});
+
+			return Created("", feedback);
 		}
 	}
 }

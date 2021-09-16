@@ -36,6 +36,7 @@ namespace luncher_api
 
 			services.AddScoped<RestaurantRepository>();
 			services.AddScoped<VisitorRepository>();
+			services.AddScoped<FeedbackRepository>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
