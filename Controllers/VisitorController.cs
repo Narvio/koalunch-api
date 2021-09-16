@@ -1,4 +1,7 @@
 
+using System.Threading.Tasks;
+using luncher_api.Models.Api;
+using luncher_api.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace luncher_api.Controllers
@@ -7,11 +10,17 @@ namespace luncher_api.Controllers
 	[Route("api/stats/visitors")]
 	public class VisitorController : ControllerBase
 	{
-		public VisitorController() { }
+		private VisitorRepository _repository;
+
+		public VisitorController(VisitorRepository repository)
+		{
+			_repository = repository;
+		}
 
 		[HttpGet]
-		public void Get()
+		public async Task<Visitors[]> GetAll()
 		{
+			return await _repository.GetAll();
 		}
 	}
 }
