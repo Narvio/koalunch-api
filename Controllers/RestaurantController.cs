@@ -1,8 +1,9 @@
 
-using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
 using luncher_api.Models.Api;
+using luncher_api.Repositories;
+using System.Threading.Tasks;
 
 namespace luncher_api.Controllers
 {
@@ -10,13 +11,17 @@ namespace luncher_api.Controllers
 	[Route("api/[controller]")]
 	public class RetaurantController : ControllerBase
 	{
-		public RetaurantController() { }
+		private RestaurantRepository _repository;
+
+		public RetaurantController(RestaurantRepository repository)
+		{
+			_repository = repository;
+		}
 
 		[HttpGet]
-		public IEnumerable<Restaurant> Get()
+		public async Task<Restaurant[]> GetAll()
 		{
-			return new Restaurant[] {
-			};
+			return await _repository.GetAll();
 		}
 	}
 }
