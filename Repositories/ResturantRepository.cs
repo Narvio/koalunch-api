@@ -11,5 +11,10 @@ namespace luncher_api.Repositories
 		{
 			return await Task.FromResult(StaticRestaurants.GetAll());
 		}
+
+		public async Task<Restaurant> GetById(string id)
+		{
+			return await Task.FromResult(StaticRestaurants.GetById(id));
+		}
 	}
 }
