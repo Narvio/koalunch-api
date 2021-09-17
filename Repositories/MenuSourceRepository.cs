@@ -53,6 +53,12 @@ namespace koalunch_api.Repositories
 						MenuUrl = "http://www.rebio.cz/Holandska/Nase-nabidka/dW-ei.folder.aspx",
 						Type = MenuType.Standard,
 						Parser = new Rebio()
+					},
+					new MenuSource {
+						Restaurant = SearchRestaurant(restaurants, "tustoTitanium"),
+						MenuUrl = "http://titanium.tusto.cz/tydenni-menu/",
+						Type = MenuType.Standard,
+						Parser = new Tusto()
 					}
 				};
 			}
