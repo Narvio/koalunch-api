@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using koalunch_api.Models;
 using koalunch_api.Models.Api;
 using koalunch_api.Repositories;
+using koalunch_api.MenuParsers;
 
 namespace koalunch_api.Controllers
 {
@@ -14,10 +15,12 @@ namespace koalunch_api.Controllers
 	public class MenuController : ControllerBase
 	{
 		MenuSourceRepository _repository;
+		HtmlDocumentContext _htmlContext;
 
-		public MenuController(MenuSourceRepository repository)
+		public MenuController(MenuSourceRepository repository, HtmlDocumentContext htmlContext)
 		{
 			_repository = repository;
+			_htmlContext = htmlContext;
 		}
 
 		[HttpGet]
@@ -40,9 +43,11 @@ namespace koalunch_api.Controllers
 
 		private async Task<Menu> ParseMenuFromSource(MenuSource source)
 		{
+			var document = await _htmlContext.LoadDocument(source.MenuUrl);
+
 			return new Menu
 			{
-				menus = await source.Parser.ParseDay(""),
+				menus = await source.Parser.ParseDay(document),
 				type = source.Type,
 				restaurant = source.Restaurant
 			};

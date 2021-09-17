@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
 using koalunch_api.Repositories;
+using koalunch_api.MenuParsers;
 
 namespace koalunch_api
 {
@@ -32,6 +33,10 @@ namespace koalunch_api
 			services.AddScoped<VisitorRepository>();
 			services.AddScoped<FeedbackRepository>();
 			services.AddScoped<MenuSourceRepository>();
+			services.AddSingleton<HtmlDocumentContext>(_provider =>
+			{
+				return new HtmlDocumentContext(HtmlDocumentContext.CreateDefaultBrowsingContext());
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
