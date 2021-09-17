@@ -1,4 +1,3 @@
-
 namespace koalunch_api.Models.Api
 {
 	public class RestaurantPosition

@@ -1,8 +1,8 @@
-
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+
 using koalunch_api.Models.Api;
 using koalunch_api.Repositories;
-using Microsoft.AspNetCore.Mvc;
 
 namespace koalunch_api.Controllers
 {

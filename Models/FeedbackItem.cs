@@ -1,4 +1,3 @@
-
 namespace koalunch_api.Models
 {
 	public class FeedbackItem
