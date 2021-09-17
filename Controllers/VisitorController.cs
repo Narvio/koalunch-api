@@ -1,10 +1,10 @@
 
 using System.Threading.Tasks;
-using luncher_api.Models.Api;
-using luncher_api.Repositories;
+using koalunch_api.Models.Api;
+using koalunch_api.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
-namespace luncher_api.Controllers
+namespace koalunch_api.Controllers
 {
 	[ApiController]
 	[Route("api/stats/visitors")]

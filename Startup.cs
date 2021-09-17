@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using luncher_api.Repositories;
+using koalunch_api.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,7 +13,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-namespace luncher_api
+namespace koalunch_api
 {
 	public class Startup
 	{
@@ -31,7 +31,7 @@ namespace luncher_api
 			services.AddControllers();
 			services.AddSwaggerGen(c =>
 			{
-				c.SwaggerDoc("v1", new OpenApiInfo { Title = "luncher_api", Version = "v1" });
+				c.SwaggerDoc("v1", new OpenApiInfo { Title = "Koalunch API", Version = "v1" });
 			});
 
 			services.AddScoped<RestaurantRepository>();
@@ -47,7 +47,7 @@ namespace luncher_api
 			{
 				app.UseDeveloperExceptionPage();
 				app.UseSwagger();
-				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "luncher_api v1"));
+				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Koalunch API v1"));
 			}
 
 			app.UseHttpsRedirection();

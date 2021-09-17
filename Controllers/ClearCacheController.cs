@@ -1,7 +1,7 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace luncher_api.Controllers
+namespace koalunch_api.Controllers
 {
 	[ApiController]
 	[Route("api/clearCache")]

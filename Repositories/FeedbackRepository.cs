@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
 
-using luncher_api.Models;
+using koalunch_api.Models;
 
-namespace luncher_api.Repositories
+namespace koalunch_api.Repositories
 {
 	public class FeedbackRepository
 	{

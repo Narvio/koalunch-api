@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using luncher_api.Models.Api;
+using koalunch_api.Models.Api;
 
-namespace luncher_api.MenuParsers
+namespace koalunch_api.MenuParsers
 {
 	public class Kometa : Parser
 	{

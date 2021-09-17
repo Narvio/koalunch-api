@@ -1,4 +1,4 @@
-namespace luncher_api.Models.Api
+namespace koalunch_api.Models.Api
 {
 	public enum MenuType
 	{

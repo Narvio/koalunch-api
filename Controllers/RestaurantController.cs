@@ -1,11 +1,11 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-using luncher_api.Models.Api;
-using luncher_api.Repositories;
+using koalunch_api.Models.Api;
+using koalunch_api.Repositories;
 using System.Threading.Tasks;
 
-namespace luncher_api.Controllers
+namespace koalunch_api.Controllers
 {
 	[ApiController]
 	[Route("api/[controller]")]

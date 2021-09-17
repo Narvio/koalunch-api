@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
-using luncher_api.Models.Api;
-using luncher_api.MenuParsers;
-using luncher_api.Repositories;
+using koalunch_api.Models.Api;
+using koalunch_api.MenuParsers;
+using koalunch_api.Repositories;
 using System.Threading.Tasks;
-using luncher_api.Models;
+using koalunch_api.Models;
 
-namespace luncher_api.Controllers
+namespace koalunch_api.Controllers
 {
 	[ApiController]
 	[Route("api/[controller]")]

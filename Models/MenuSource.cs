@@ -1,8 +1,8 @@
 
-using luncher_api.MenuParsers;
-using luncher_api.Models.Api;
+using koalunch_api.MenuParsers;
+using koalunch_api.Models.Api;
 
-namespace luncher_api.Models
+namespace koalunch_api.Models
 {
 	public class MenuSource
 	{

@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
 using System.Linq;
 
-using luncher_api.MenuParsers;
-using luncher_api.Models;
+using koalunch_api.MenuParsers;
+using koalunch_api.Models;
 
-namespace luncher_api.Repositories
+namespace koalunch_api.Repositories
 {
 	public class MenuSourceRepository
 	{

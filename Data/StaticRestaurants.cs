@@ -1,7 +1,7 @@
 using System;
-using luncher_api.Models.Api;
+using koalunch_api.Models.Api;
 
-namespace luncher_api.Data
+namespace koalunch_api.Data
 {
 	public static class StaticRestaurants
 	{

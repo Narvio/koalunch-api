@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "luncher_api": {
+    "koalunch_api": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": true,

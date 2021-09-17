@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
 
-using luncher_api.Data;
-using luncher_api.Models.Api;
+using koalunch_api.Data;
+using koalunch_api.Models.Api;
 
-namespace luncher_api.Repositories
+namespace koalunch_api.Repositories
 {
 	public class RestaurantRepository
 	{
