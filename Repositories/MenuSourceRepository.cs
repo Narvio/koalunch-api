@@ -3,6 +3,7 @@ using System.Linq;
 
 using koalunch_api.MenuParsers;
 using koalunch_api.Models;
+using koalunch_api.Models.Api;
 
 namespace koalunch_api.Repositories
 {
@@ -32,17 +33,30 @@ namespace koalunch_api.Repositories
 		{
 			if (_menuSources == null)
 			{
+				var restaurants = await _repository.GetAll();
+
 				_menuSources = new MenuSource[] {
 					new MenuSource {
-						Restaurant = await _repository.GetById("kometaPubArena"),
+						Restaurant = SearchRestaurant(restaurants, "kometaPubArena"),
 						MenuUrl = "https://www.kometapub.cz/arena.php",
-						Type = Models.Api.MenuType.Standard,
+						Type = MenuType.Standard,
 						Parser = new Kometa()
+					},
+					new MenuSource {
+						Restaurant = SearchRestaurant(restaurants, "myFoodHolandska"),
+						MenuUrl = "http://www.sklizeno.cz/o-nas/brno-holandska/",
+						Type = MenuType.Standard,
+						Parser = new MyFood()
 					}
 				};
 			}
 
 			return _menuSources;
+		}
+
+		private Restaurant SearchRestaurant(Restaurant[] restaurants, string id)
+		{
+			return restaurants.First(r => r.id == id);
 		}
 	}
 }
