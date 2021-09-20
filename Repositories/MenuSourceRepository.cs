@@ -65,6 +65,12 @@ namespace koalunch_api.Repositories
 						MenuUrl = "http://www.uhovezihopupku.cz/menu/",
 						Type = MenuType.Standard,
 						Parser = new UHovezihoPupku()
+					},
+					new MenuSource {
+						Restaurant = SearchRestaurant(restaurants, "uTesare"),
+						MenuUrl = "http://www.utesare.cz/poledni-nabidka/",
+						Type = MenuType.Standard,
+						Parser = new UTesare()
 					}
 				};
 			}
