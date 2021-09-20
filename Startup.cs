@@ -37,6 +37,12 @@ namespace koalunch_api
 			{
 				return new HtmlDocumentContext(HtmlDocumentContext.CreateDefaultBrowsingContext());
 			});
+			services.AddHttpClient("zomato", client =>
+			{
+				client.BaseAddress = new System.Uri("https://developers.zomato.com/api/v2.1/dailymenu");
+				client.DefaultRequestHeaders.Add("accept", "application/json");
+				client.DefaultRequestHeaders.Add("user_key", "b0a94ba965b2a1bbcdfc59d1632e0a6d");
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

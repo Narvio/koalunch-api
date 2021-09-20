@@ -4,6 +4,7 @@ using System.Linq;
 using koalunch_api.MenuParsers;
 using koalunch_api.Models;
 using koalunch_api.Models.Api;
+using System.Net.Http;
 
 namespace koalunch_api.Repositories
 {
@@ -11,10 +12,12 @@ namespace koalunch_api.Repositories
 	{
 		RestaurantRepository _repository;
 		MenuSource[] _menuSources;
+		IHttpClientFactory _httpClientFactory;
 
-		public MenuSourceRepository(RestaurantRepository repository)
+		public MenuSourceRepository(RestaurantRepository repository, IHttpClientFactory httpClientFactory)
 		{
 			_repository = repository;
+			_httpClientFactory = httpClientFactory;
 		}
 
 		public async Task<MenuSource[]> GetAll()
@@ -71,6 +74,12 @@ namespace koalunch_api.Repositories
 						MenuUrl = "http://www.utesare.cz/poledni-nabidka/",
 						Type = MenuType.Standard,
 						Parser = new UTesare()
+					},
+					new MenuSource {
+						Restaurant = SearchRestaurant(restaurants, "buffaloAmericanSteakhouse"),
+						MenuUrl = "",
+						Type = MenuType.Standard,
+						Parser = new Zomato("18491544", _httpClientFactory.CreateClient("zomato"))
 					}
 				};
 			}
