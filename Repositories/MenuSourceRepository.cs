@@ -59,6 +59,12 @@ namespace koalunch_api.Repositories
 						MenuUrl = "http://titanium.tusto.cz/tydenni-menu/",
 						Type = MenuType.Standard,
 						Parser = new Tusto()
+					},
+					new MenuSource {
+						Restaurant = SearchRestaurant(restaurants, "uHovezihoPupku"),
+						MenuUrl = "http://www.uhovezihopupku.cz/menu/",
+						Type = MenuType.Standard,
+						Parser = new UHovezihoPupku()
 					}
 				};
 			}
