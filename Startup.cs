@@ -22,7 +22,7 @@ namespace koalunch_api
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-
+			services.AddCors();
 			services.AddControllers();
 			services.AddSwaggerGen(c =>
 			{
@@ -55,6 +55,12 @@ namespace koalunch_api
 				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Koalunch API v1"));
 			}
 
+			app.UseCors(builder =>
+			{
+				builder.AllowAnyOrigin();
+				builder.AllowAnyHeader();
+				builder.AllowAnyMethod();
+			});
 			app.UseHttpsRedirection();
 
 			app.UseRouting();
