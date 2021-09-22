@@ -15,7 +15,7 @@ namespace koalunch_api.MenuParsers
 		{
 			get
 			{
-				return (int)DateTime.Now.DayOfWeek - 1;
+				return (int)DateTime.Now.DayOfWeek;
 			}
 		}
 
@@ -23,7 +23,7 @@ namespace koalunch_api.MenuParsers
 		{
 
 			var menus = document.QuerySelectorAll("table.menu_den");
-			var dayMenu = menus[ThisDay];
+			var dayMenu = menus[ThisDay + 1];
 			var weekMenu = menus[menus.Length - 1];
 
 			return await Task.FromResult(new MenuSection[] {
@@ -49,7 +49,7 @@ namespace koalunch_api.MenuParsers
 				meals.Add(new Meal
 				{
 					name = names[i].TextContent,
-					price = names[i].TextContent
+					price = prices[i].TextContent
 				});
 			}
 
