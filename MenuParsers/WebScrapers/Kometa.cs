@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AngleSharp.Dom;
 
@@ -28,12 +29,23 @@ namespace koalunch_api.MenuParsers
 
 		public async Task<MenuSection[]> ParseDay(IDocument document)
 		{
+			var meals = new List<Meal>();
 			var dayData = document.QuerySelectorAll($"div#{DivId} tr");
-			var soupData = document.QuerySelectorAll($"div#{DivId} p")[0];
+			var soupData = document.QuerySelectorAll($"div#{DivId} p")[1];
+
+			if (soupData != null && soupData.TextContent.StartsWith("Polévka:"))
+			{
+				meals.Add(new Meal
+				{
+					name = soupData.TextContent,
+					price = ""
+				});
+			}
 
 			return await Task.FromResult(new MenuSection[] {
 				new MenuSection {
-					meals = ProcessMenuList(dayData)
+					meals = meals.Concat(ProcessMenuList(dayData))
+								.ToArray()
 				}
 			});
 		}
