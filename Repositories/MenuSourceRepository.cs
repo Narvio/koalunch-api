@@ -37,6 +37,7 @@ namespace koalunch_api.Repositories
 			if (_menuSources == null)
 			{
 				var restaurants = await _repository.GetAll();
+				var httpClient = _httpClientFactory.CreateClient();
 
 				_menuSources = new MenuSource[] {
 					new MenuSource {
@@ -80,6 +81,12 @@ namespace koalunch_api.Repositories
 						MenuUrl = "",
 						Type = MenuType.Standard,
 						Parser = new Zomato("18491544", _httpClientFactory.CreateClient("zomato"))
+					},
+					new MenuSource {
+						Restaurant = SearchRestaurant(restaurants, "eatologyHolandska"),
+						MenuUrl = "http://iqrestaurant.cz/brno/getData.svc?type=brnoMenuHTML2",
+						Type = MenuType.PDF,
+						PDFInfoProvider = new Eatology(SearchRestaurant(restaurants, "eatologyHolandska"), httpClient)
 					}
 				};
 			}

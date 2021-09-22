@@ -6,11 +6,17 @@ namespace koalunch_api.Models.Api
 		PDF
 	}
 
+	public class PDFContentBuffer
+	{
+		public string type { get; set; } = "Buffer";
+		public int[] data { get; set; }
+	}
+
 	public class PDFInfo
 	{
 		public string url { get; set; }
 		public int[] pages { get; set; }
-		public byte[] content { get; set; }
+		public PDFContentBuffer content { get; set; }
 	}
 
 	public class Meal

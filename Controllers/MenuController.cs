@@ -43,14 +43,28 @@ namespace koalunch_api.Controllers
 
 		private async Task<Menu> ParseMenuFromSource(MenuSource source)
 		{
-			var document = await _htmlContext.LoadDocument(source.MenuUrl);
-
-			return new Menu
+			var menu = new Menu
 			{
-				menus = await source.Parser.ParseDay(document),
 				type = source.Type,
 				restaurant = source.Restaurant
 			};
+
+			switch (source.Type)
+			{
+				case MenuType.Standard:
+					{
+						var document = await _htmlContext.LoadDocument(source.MenuUrl);
+						menu.menus = await source.Parser.ParseDay(document);
+						break;
+					}
+				case MenuType.PDF:
+					{
+						menu.pdfInfo = await source.PDFInfoProvider.GetDayInfo();
+						break;
+					}
+			}
+
+			return menu;
 		}
 	}
 }

@@ -9,5 +9,6 @@ namespace koalunch_api.Models
 		public string MenuUrl { get; set; }
 		public MenuType Type { get; set; }
 		public Parser Parser { get; set; }
+		public PDFInfoProvider PDFInfoProvider { get; set; }
 	}
 }
