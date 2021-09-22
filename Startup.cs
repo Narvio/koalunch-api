@@ -7,6 +7,9 @@ using Microsoft.OpenApi.Models;
 
 using koalunch_api.Repositories;
 using koalunch_api.MenuParsers;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace koalunch_api
 {
@@ -61,7 +64,9 @@ namespace koalunch_api
 				builder.AllowAnyHeader();
 				builder.AllowAnyMethod();
 			});
-			app.UseHttpsRedirection();
+			// app.UseHttpsRedirection();
+
+			ConfigureStaticFiles(app, env);
 
 			app.UseRouting();
 
@@ -70,6 +75,22 @@ namespace koalunch_api
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllers();
+			});
+		}
+
+		private void ConfigureStaticFiles(IApplicationBuilder app, IWebHostEnvironment env)
+		{
+			var fileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, @"client"));
+			var options = new DefaultFilesOptions();
+			options.FileProvider = fileProvider;
+			options.DefaultFileNames.Clear();
+			options.DefaultFileNames.Add("public/index.html");
+
+			app.UseDefaultFiles(options);
+			app.UseStaticFiles(new StaticFileOptions()
+			{
+				FileProvider = fileProvider,
+				RequestPath = new PathString("")
 			});
 		}
 	}
