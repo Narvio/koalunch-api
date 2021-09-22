@@ -87,6 +87,12 @@ namespace koalunch_api.Repositories
 						MenuUrl = "http://iqrestaurant.cz/brno/getData.svc?type=brnoMenuHTML2",
 						Type = MenuType.PDF,
 						PDFInfoProvider = new Eatology(SearchRestaurant(restaurants, "eatologyHolandska"), httpClient)
+					},
+					new MenuSource {
+						Restaurant = SearchRestaurant(restaurants, "iqMoravka"),
+						MenuUrl = "http://www.iqrestaurant.cz/moravka.html?iframe=true",
+						Type = MenuType.PDF,
+						PDFInfoProvider = new IQMoravka(SearchRestaurant(restaurants, "iqMoravka"), httpClient)
 					}
 				};
 			}
