@@ -10,6 +10,9 @@ using koalunch_api.MenuParsers;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using koalunch_api.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace koalunch_api
 {
@@ -32,6 +35,11 @@ namespace koalunch_api
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "Koalunch API", Version = "v1" });
 			});
 
+			services.AddDbContext<FeedbackContext>(options => {
+					var dbPath = $"{Environment.CurrentDirectory}{System.IO.Path.DirectorySeparatorChar}database.sqlite3";
+					options.UseSqlite($"Data Source={dbPath}");
+				}
+			);
 			services.AddScoped<RestaurantRepository>();
 			services.AddScoped<VisitorRepository>();
 			services.AddScoped<FeedbackRepository>();

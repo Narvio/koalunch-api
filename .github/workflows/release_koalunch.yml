@@ -27,6 +27,11 @@ jobs:
       - name: Fetch client submodule
         run: git submodule update --init --recursive
 
+      # - name: Initialize database
+      #   run: |
+      #     dotnet tool install --global dotnet-ef
+      #     dotnet ef database update
+
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
