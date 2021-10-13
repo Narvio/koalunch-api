@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading.Tasks;
 
 using koalunch_api.Models;
@@ -6,14 +7,24 @@ namespace koalunch_api.Repositories
 {
 	public class FeedbackRepository
 	{
+		private FeedbackContext _context;
+
+		public FeedbackRepository(FeedbackContext context)
+		{
+			_context = context;
+		}
+
 		public async Task<FeedbackItem[]> GetAll()
 		{
-			return await Task.FromResult(new FeedbackItem[] { });
+			return await Task.FromResult(
+				_context.FeedbackItems.ToArray()
+			);
 		}
 
 		public async Task Commit(FeedbackItem feedback)
 		{
-			await Task.CompletedTask;
+			_context.Add(feedback);
+			await _context.SaveChangesAsync();
 		}
 	}
 }

@@ -10,6 +10,7 @@ using koalunch_api.MenuParsers;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using koalunch_api.Models;
 
 namespace koalunch_api
 {
@@ -32,6 +33,7 @@ namespace koalunch_api
 				c.SwaggerDoc("v1", new OpenApiInfo { Title = "Koalunch API", Version = "v1" });
 			});
 
+			services.AddDbContext<FeedbackContext>();
 			services.AddScoped<RestaurantRepository>();
 			services.AddScoped<VisitorRepository>();
 			services.AddScoped<FeedbackRepository>();
