@@ -42,7 +42,7 @@ namespace koalunch_api
 			);
 			services.AddScoped<RestaurantRepository>();
 			services.AddScoped<VisitorRepository>();
-			services.AddScoped<FeedbackRepository>();
+			services.AddScoped<FeedbackRepository, GoogleFeedbackRepository>();
 			services.AddScoped<MenuSourceRepository>();
 			services.AddSingleton<HtmlDocumentContext>(_provider =>
 			{
