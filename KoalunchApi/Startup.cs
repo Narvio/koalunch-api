@@ -11,6 +11,7 @@ using Microsoft.Extensions.FileProviders;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using koalunch_api.Models;
+using System;
 
 namespace koalunch_api
 {
@@ -36,7 +37,16 @@ namespace koalunch_api
 			services.AddDbContext<FeedbackContext>();
 			services.AddScoped<RestaurantRepository>();
 			services.AddScoped<VisitorRepository>();
-			services.AddScoped<FeedbackRepository, GoogleFeedbackRepository>();
+			services.AddScoped<FeedbackRepository, GoogleFeedbackRepository>(_provicer =>
+			{
+				return new GoogleFeedbackRepository(new GoogleOptions
+				{
+					AppName = Configuration["Google:AppName"],
+					SpreadsheetId = Configuration["Google:SpreadsheetId"],
+					Range = Configuration["Google:Range"],
+					CredentialJson = Environment.GetEnvironmentVariable("GOOGLE_SERVICE_CREDENTIAL")
+				});
+			});
 			services.AddScoped<MenuSourceRepository>();
 			services.AddSingleton<HtmlDocumentContext>(_provider =>
 			{
