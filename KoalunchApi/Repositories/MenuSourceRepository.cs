@@ -8,7 +8,7 @@ using System.Net.Http;
 
 namespace koalunch_api.Repositories
 {
-	public class MenuSourceRepository
+	public class MenuSourceRepository: IRepository<MenuSource>
 	{
 		RestaurantRepository _repository;
 		MenuSource[] _menuSources;

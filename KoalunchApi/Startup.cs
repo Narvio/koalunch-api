@@ -47,8 +47,8 @@ namespace koalunch_api
 					CredentialJson = Environment.GetEnvironmentVariable("GOOGLE_SERVICE_CREDENTIAL")
 				});
 			});
-			services.AddScoped<MenuSourceRepository>();
-			services.AddSingleton<HtmlDocumentContext>(_provider =>
+			services.AddScoped<IRepository<MenuSource>, MenuSourceRepository>();
+			services.AddSingleton<IHtmlDocumentContext, HtmlDocumentContext>(_provider =>
 			{
 				return new HtmlDocumentContext(HtmlDocumentContext.CreateDefaultBrowsingContext());
 			});
