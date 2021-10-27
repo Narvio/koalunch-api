@@ -36,7 +36,6 @@ namespace koalunch_api
 			});
 
 			services.AddDbContext<FeedbackContext>();
-			services.AddScoped<VisitorRepository>();
 			services.AddScoped<FeedbackRepository, GoogleFeedbackRepository>(_provicer =>
 			{
 				return new GoogleFeedbackRepository(new GoogleOptions
@@ -47,6 +46,7 @@ namespace koalunch_api
 					CredentialJson = Environment.GetEnvironmentVariable("GOOGLE_SERVICE_CREDENTIAL")
 				});
 			});
+			services.AddScoped<IRepository<Visitors>, VisitorRepository>();
 			services.AddScoped<IRepository<Restaurant>, RestaurantRepository>();
 			services.AddScoped<IRepository<MenuSource>, MenuSourceRepository>();
 			services.AddSingleton<IHtmlDocumentContext, HtmlDocumentContext>(_provider =>
