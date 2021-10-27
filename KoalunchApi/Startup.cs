@@ -12,6 +12,7 @@ using System.IO;
 using Microsoft.AspNetCore.Http;
 using koalunch_api.Models;
 using System;
+using koalunch_api.Models.Api;
 
 namespace koalunch_api
 {
@@ -35,7 +36,6 @@ namespace koalunch_api
 			});
 
 			services.AddDbContext<FeedbackContext>();
-			services.AddScoped<RestaurantRepository>();
 			services.AddScoped<VisitorRepository>();
 			services.AddScoped<FeedbackRepository, GoogleFeedbackRepository>(_provicer =>
 			{
@@ -47,6 +47,7 @@ namespace koalunch_api
 					CredentialJson = Environment.GetEnvironmentVariable("GOOGLE_SERVICE_CREDENTIAL")
 				});
 			});
+			services.AddScoped<IRepository<Restaurant>, RestaurantRepository>();
 			services.AddScoped<IRepository<MenuSource>, MenuSourceRepository>();
 			services.AddSingleton<IHtmlDocumentContext, HtmlDocumentContext>(_provider =>
 			{

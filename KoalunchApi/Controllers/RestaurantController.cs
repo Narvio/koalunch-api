@@ -10,9 +10,9 @@ namespace koalunch_api.Controllers
 	[Route("api/[controller]")]
 	public class RestaurantController : ControllerBase
 	{
-		private RestaurantRepository _repository;
+		private IRepository<Restaurant> _repository;
 
-		public RestaurantController(RestaurantRepository repository)
+		public RestaurantController(IRepository<Restaurant> repository)
 		{
 			_repository = repository;
 		}

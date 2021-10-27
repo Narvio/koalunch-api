@@ -5,16 +5,16 @@ using koalunch_api.Models.Api;
 
 namespace koalunch_api.Repositories
 {
-	public class RestaurantRepository
-	{
-		public async Task<Restaurant[]> GetAll()
-		{
-			return await Task.FromResult(StaticRestaurants.GetAll());
-		}
+    public class RestaurantRepository : IRepository<Restaurant>
+    {
+        public async Task<Restaurant[]> GetAll()
+        {
+            return await Task.FromResult(StaticRestaurants.GetAll());
+        }
 
-		public async Task<Restaurant> GetById(string id)
-		{
-			return await Task.FromResult(StaticRestaurants.GetById(id));
-		}
-	}
+        public async Task<Restaurant> GetById(string id)
+        {
+            return await Task.FromResult(StaticRestaurants.GetById(id));
+        }
+    }
 }
