@@ -1,3 +1,3 @@
-[submodule "client"]
-	path = client
+[submodule "KoalunchApi/client"]
+	path = KoalunchApi/client
 	url = https://github.com/Narvio/koalunch-bundle.git
