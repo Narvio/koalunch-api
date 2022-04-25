@@ -10,7 +10,6 @@ List of provided restaurant menus:
 
 - [Eatology (IQ Holandská)](http://iqrestaurant.cz/brno/menu.html)
 - [IQ Morávka](http://www.iqrestaurant.cz/moravka.html?iframe=true)
-- [MyFood Holandská](https://www.sklizeno.cz/o-nas/brno-holandska/)
 - [Tusto Titanium](http://titanium.tusto.cz/tydenni-menu/)
 - [Kometa Pub Arena](https://www.kometapub.cz/arena.php)
 - [Rebio Holandská](http://www.rebio.cz/Holandska/Nase-nabidka/dW-ei.folder.aspx)

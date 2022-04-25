@@ -47,12 +47,6 @@ namespace koalunch_api.Repositories
 						Parser = new Kometa()
 					},
 					new MenuSource {
-						Restaurant = SearchRestaurant(restaurants, "myFoodHolandska"),
-						MenuUrl = "http://www.sklizeno.cz/o-nas/brno-holandska/",
-						Type = MenuType.Standard,
-						Parser = new MyFood()
-					},
-					new MenuSource {
 						Restaurant = SearchRestaurant(restaurants, "rebioHolandska"),
 						MenuUrl = "http://www.rebio.cz/Holandska/Nase-nabidka/dW-ei.folder.aspx",
 						Type = MenuType.Standard,

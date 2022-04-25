@@ -26,15 +26,6 @@ namespace koalunch_api.Data
 				}
 			},
 			new Restaurant {
-				id = "myFoodHolandska",
-				name = "MyFood Holandská",
-				url = "https://www.sklizeno.cz/o-nas/brno-holandska/",
-				position = new RestaurantPosition {
-					lat = "49.181436",
-					lng = "16.604503"
-				}
-			},
-			new Restaurant {
 				id = "tustoTitanium",
 				name = "Tusto Titanium",
 				url = "http://titanium.tusto.cz/tydenni-menu/",
