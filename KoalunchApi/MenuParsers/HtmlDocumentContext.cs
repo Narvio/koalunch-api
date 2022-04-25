@@ -5,7 +5,7 @@ using AngleSharp.Dom;
 
 namespace koalunch_api.MenuParsers
 {
-	public class HtmlDocumentContext
+	public class HtmlDocumentContext: IHtmlDocumentContext
 	{
 
 		private BrowsingContext _browsingContext;

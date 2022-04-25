@@ -14,10 +14,10 @@ namespace koalunch_api.Controllers
 	[Route("api/[controller]")]
 	public class MenuController : ControllerBase
 	{
-		MenuSourceRepository _repository;
-		HtmlDocumentContext _htmlContext;
+		IRepository<MenuSource> _repository;
+		IHtmlDocumentContext _htmlContext;
 
-		public MenuController(MenuSourceRepository repository, HtmlDocumentContext htmlContext)
+		public MenuController(IRepository<MenuSource> repository, IHtmlDocumentContext htmlContext)
 		{
 			_repository = repository;
 			_htmlContext = htmlContext;

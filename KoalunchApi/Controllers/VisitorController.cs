@@ -10,9 +10,9 @@ namespace koalunch_api.Controllers
 	[Route("api/stats/visitors")]
 	public class VisitorController : ControllerBase
 	{
-		private VisitorRepository _repository;
+		private IRepository<Visitors> _repository;
 
-		public VisitorController(VisitorRepository repository)
+		public VisitorController(IRepository<Visitors> repository)
 		{
 			_repository = repository;
 		}

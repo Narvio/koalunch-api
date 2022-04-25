@@ -26,15 +26,6 @@ namespace koalunch_api.Data
 				}
 			},
 			new Restaurant {
-				id = "myFoodHolandska",
-				name = "MyFood Holandská",
-				url = "https://www.sklizeno.cz/o-nas/brno-holandska/",
-				position = new RestaurantPosition {
-					lat = "49.181436",
-					lng = "16.604503"
-				}
-			},
-			new Restaurant {
 				id = "tustoTitanium",
 				name = "Tusto Titanium",
 				url = "http://titanium.tusto.cz/tydenni-menu/",
@@ -86,6 +77,15 @@ namespace koalunch_api.Data
 				position = new RestaurantPosition {
 					lat = "49.18393",
 					lng = "16.579791"
+				}
+			},
+			new Restaurant {
+				id = "jeanPaulBistro",
+				name = "Jean Paul's Bistro",
+				url = "https://www.jpbistro.cz/menu-holandska/index.php",
+				position = new RestaurantPosition {
+					lat = "49.181198",
+					lng = "16.605766"
 				}
 			}
 		};

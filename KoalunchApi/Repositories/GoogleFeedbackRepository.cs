@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Google.Apis.Auth.OAuth2;
@@ -9,15 +8,24 @@ using koalunch_api.Models;
 
 namespace koalunch_api.Repositories
 {
+	public class GoogleOptions
+	{
+		public string AppName { get; set; }
+		public string SpreadsheetId { get; set; }
+		public string Range { get; set; }
+
+		public string CredentialJson { get; set; }
+	}
+
 	public class GoogleFeedbackRepository : FeedbackRepository
 	{
 		private string[] _scopes = { SheetsService.Scope.Spreadsheets };
-		private string _appName = "Koalunch";
-		private string _spreadsheetId = "1gCPjo4C3pfcpHPdjjN1gORA35cZe_6oujAIwKxek2mo";
 		private SheetsService _service;
+		private GoogleOptions _options;
 
-		public GoogleFeedbackRepository()
+		public GoogleFeedbackRepository(GoogleOptions options)
 		{
+			_options = options;
 		}
 
 		public async Task<FeedbackItem[]> GetAll()
@@ -41,24 +49,21 @@ namespace koalunch_api.Repositories
 
 		private void ConnectToGoogle()
 		{
-			GoogleCredential credential;
-
-			credential = GoogleCredential.FromJson(
-				Environment.GetEnvironmentVariable("GOOGLE_SERVICE_CREDENTIAL")
-			).CreateScoped(_scopes);
+			var credential = GoogleCredential
+				.FromJson(_options.CredentialJson)
+				.CreateScoped(_scopes);
 
 			_service = new SheetsService(
 				new BaseClientService.Initializer()
 				{
 					HttpClientInitializer = credential,
-					ApplicationName = _appName
+					ApplicationName = _options.AppName
 				}
 			);
 		}
 
 		private void InsertData(FeedbackItem feedback)
 		{
-			var range = "Feedback!A1:D";
 			var requestBody = new ValueRange()
 			{
 				MajorDimension = "ROWS"
@@ -68,7 +73,7 @@ namespace koalunch_api.Repositories
 				new List<object> { feedback.Name, feedback.RestaurantName, feedback.RestaurantUrl, feedback.Note }
 			};
 
-			var request = _service.Spreadsheets.Values.Append(requestBody, _spreadsheetId, range);
+			var request = _service.Spreadsheets.Values.Append(requestBody, _options.SpreadsheetId, _options.Range);
 			request.ValueInputOption = SpreadsheetsResource.ValuesResource.AppendRequest.ValueInputOptionEnum.RAW;
 			request.InsertDataOption = SpreadsheetsResource.ValuesResource.AppendRequest.InsertDataOptionEnum.INSERTROWS;
 
