@@ -87,6 +87,15 @@ namespace koalunch_api.Data
 					lat = "49.18393",
 					lng = "16.579791"
 				}
+			},
+			new Restaurant {
+				id = "jeanPaulBistro",
+				name = "Jean Paul's Bistro",
+				url = "https://www.jpbistro.cz/menu-holandska/index.php",
+				position = new RestaurantPosition {
+					lat = "49.181198",
+					lng = "16.605766"
+				}
 			}
 		};
 

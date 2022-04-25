@@ -17,6 +17,7 @@ List of provided restaurant menus:
 - [U Hovězího pupku](http://www.uhovezihopupku.cz/menu/)
 - [Hostinec u Tesaře](http://www.utesare.cz/poledni-nabidka/)
 - [Buffalo American Steakhouse](http://www.restauracebuffalo.cz/)
+- [Jean Paul's Bistro](https://www.jpbistro.cz/menu-holandska/index.php)
 
 ## Technologies used
 

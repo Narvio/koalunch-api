@@ -8,13 +8,13 @@ using System.Net.Http;
 
 namespace koalunch_api.Repositories
 {
-	public class MenuSourceRepository: IRepository<MenuSource>
+	public class MenuSourceRepository : IRepository<MenuSource>
 	{
-		RestaurantRepository _repository;
+		IRepository<Restaurant> _repository;
 		MenuSource[] _menuSources;
 		IHttpClientFactory _httpClientFactory;
 
-		public MenuSourceRepository(RestaurantRepository repository, IHttpClientFactory httpClientFactory)
+		public MenuSourceRepository(IRepository<Restaurant> repository, IHttpClientFactory httpClientFactory)
 		{
 			_repository = repository;
 			_httpClientFactory = httpClientFactory;
@@ -93,6 +93,12 @@ namespace koalunch_api.Repositories
 						MenuUrl = "http://www.iqrestaurant.cz/moravka.html?iframe=true",
 						Type = MenuType.PDF,
 						PDFInfoProvider = new IQMoravka(SearchRestaurant(restaurants, "iqMoravka"), httpClient)
+					},
+					new MenuSource {
+						Restaurant = SearchRestaurant(restaurants, "jeanPaulBistro"),
+						MenuUrl = "https://www.jpbistro.cz/menu-holandska/index.php",
+						Type = MenuType.Standard,
+						Parser = new JeanPaulBistro()
 					}
 				};
 			}
