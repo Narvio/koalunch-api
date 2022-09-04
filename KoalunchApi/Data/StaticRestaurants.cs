@@ -93,6 +93,7 @@ namespace koalunch_api.Data
 				id = "grandKitchenVlnena",
 				name = "Grand Kitchen Vlněna",
 				url = "https://www.grandkitchenvlnena.cz/menu/",
+				dateAdded = new DateTime(2022, 9, 4),
 				position = new RestaurantPosition
                 {
 					lat = "49.1891971",
