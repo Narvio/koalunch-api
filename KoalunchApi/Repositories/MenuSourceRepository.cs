@@ -93,6 +93,13 @@ namespace koalunch_api.Repositories
 						MenuUrl = "https://www.jpbistro.cz/menu-holandska/index.php",
 						Type = MenuType.Standard,
 						Parser = new JeanPaulBistro()
+					},
+					new MenuSource
+                    {
+						Restaurant = SearchRestaurant(restaurants, "grandKitchenVlnena"),
+						MenuUrl = "https://www.grandkitchenvlnena.cz/menu/",
+						Type = MenuType.Standard,
+						Parser = new GrandKitchenVlnena()
 					}
 				};
 			}

@@ -87,6 +87,17 @@ namespace koalunch_api.Data
 					lat = "49.181198",
 					lng = "16.605766"
 				}
+			},
+			new Restaurant
+            {
+				id = "grandKitchenVlnena",
+				name = "Grand Kitchen Vlněna",
+				url = "https://www.grandkitchenvlnena.cz/menu/",
+				position = new RestaurantPosition
+                {
+					lat = "49.1891971",
+					lng = "16.6143149"
+				}
 			}
 		};
 
