@@ -99,6 +99,18 @@ namespace koalunch_api.Data
 					lat = "49.1891971",
 					lng = "16.6143149"
 				}
+			},
+			new Restaurant
+            {
+				id = "sharingham",
+				name = "Sharingham",
+				url = "https://www.restaurace-sharingham.cz/",
+				dateAdded = new DateTime(2022, 9, 5),
+				position = new RestaurantPosition
+                {
+					lat = "49.186083",
+					lng = "16.5932156"
+				}
 			}
 		};
 
