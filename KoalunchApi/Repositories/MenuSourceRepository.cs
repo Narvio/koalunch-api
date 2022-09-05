@@ -100,6 +100,13 @@ namespace koalunch_api.Repositories
 						MenuUrl = "https://www.grandkitchenvlnena.cz/menu/",
 						Type = MenuType.Standard,
 						Parser = new GrandKitchenVlnena()
+					},
+					new MenuSource
+                    {
+						Restaurant = SearchRestaurant(restaurants, "sharingham"),
+						MenuUrl = "https://www.restaurace-sharingham.cz/",
+						Type = MenuType.Standard,
+						Parser = new Sharingham()
 					}
 				};
 			}
