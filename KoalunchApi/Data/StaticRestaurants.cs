@@ -111,6 +111,18 @@ namespace koalunch_api.Data
 					lat = "49.186083",
 					lng = "16.5932156"
 				}
+			},
+			new Restaurant
+            {
+				id = "goaSlatina",
+				name = "Goa Slatina",
+				url = "http://www.restaurant-goa-slatina.cz/lang-cs/denni-menu",
+				dateAdded = new DateTime(2022, 9, 19),
+				position = new RestaurantPosition
+                {
+					lat = "49.1775199",
+					lng = "16.6829385"
+				}
 			}
 		};
 

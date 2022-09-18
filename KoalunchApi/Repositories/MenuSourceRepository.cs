@@ -107,6 +107,13 @@ namespace koalunch_api.Repositories
 						MenuUrl = "https://www.restaurace-sharingham.cz/",
 						Type = MenuType.Standard,
 						Parser = new Sharingham()
+					},
+					new MenuSource
+                    {
+						Restaurant = SearchRestaurant(restaurants, "goaSlatina"),
+						MenuUrl = "http://www.restaurant-goa-slatina.cz/lang-cs/denni-menu",
+						Type = MenuType.Standard,
+						Parser = new GoaSlatina()
 					}
 				};
 			}
