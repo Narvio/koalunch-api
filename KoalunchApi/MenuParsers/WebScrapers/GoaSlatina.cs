@@ -10,7 +10,7 @@ namespace koalunch_api.MenuParsers
     {
         private int CurrentDayIndex
         {
-            get => 2;
+            get => (int)DateTime.Now.DayOfWeek - 1;
         }
 
         public async Task<MenuSection[]> ParseDay(IDocument document)
