@@ -15,7 +15,7 @@ namespace koalunch_api.MenuParsers
 		{
 			get
 			{
-				return (int)DateTime.Now.DayOfWeek;
+				return (int)DateTime.Now.DayOfWeek + OffsetThisDay();
 			}
 		}
 
@@ -31,6 +31,11 @@ namespace koalunch_api.MenuParsers
 			var response = await _client.SendAsync(request);
 			var content = await response.Content.ReadAsByteArrayAsync();
 
+			if (!IsTodaySupported())
+            {
+				throw new Exception("No menu today");
+            }
+
 			return new PDFInfo
 			{
 				url = _restaurant.url,
@@ -41,5 +46,42 @@ namespace koalunch_api.MenuParsers
 				}
 			};
 		}
+
+		private string GetTodayString()
+        {
+			var date = DateTime.Now;
+			return $"{date.Day}.{date.Month}.{date.Year}";
+		}
+
+		private int OffsetThisDay()
+        {
+			switch (GetTodayString())
+            {
+				case "29.9.2022":
+				case "30.9.2022":
+                    {
+						return -1;
+                    }
+				default:
+                    {
+						return 0;
+                    }
+            }
+        }
+
+		private bool IsTodaySupported()
+        {
+			switch (GetTodayString())
+            {
+				case "28.9.2022":
+					{
+						return false;
+					} ;
+				default:
+					{
+						return true;
+					};
+            }
+        }
 	}
 }
