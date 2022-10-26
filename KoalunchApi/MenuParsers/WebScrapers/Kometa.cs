@@ -11,11 +11,11 @@ namespace koalunch_api.MenuParsers
 	public class Kometa : Parser
 	{
 		readonly string[] DayIDs = new string[] {
-			"po",
-			"ut",
-			"st",
-			"ct",
-			"pa",
+			"Mon",
+			"Tue",
+			"Wed",
+			"Thu",
+			"Fri",
 		};
 
 		private string DivId
